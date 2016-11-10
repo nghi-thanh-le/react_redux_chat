@@ -1,6 +1,6 @@
-export default function (message) {
+export function newMessage (message) {
     return {
         type: 'NEW_MESSAGE',
         message
-    }
+    };
 };

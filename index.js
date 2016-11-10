@@ -23,14 +23,30 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-io.sockets.on('connection', socket => {
-    let socketId = socket.id.slice(8);
-    console.log('we have new connection from ', socketId);
-    socket.on('message', body => {
-        socket.broadcast.emit('message', {
-            body,
-            from: socketId
+let socketArray = [];
+io.on('connection', socket => {
+    socket.name = 'user '.concat(socketArray.length);
+    socketArray.push(socket.name);
+
+    io.emit('NEW_USER', {
+        socketArray,
+        name: socket.name
+    });
+
+    socket.on('NEW_MESSAGE', message => {
+        io.emit('NEW_MESSAGE_RETURN', {
+            socketName: socket.name,
+            message
         });
+    });
+
+    socket.on('disconnect', data => {
+        // data = null;
+        const index = socketArray.findIndex((value) => {
+            return value == socket.name;
+        });
+        socketArray.splice(index, 1);
+        io.emit('UPDATE_USERS', socketArray);
     });
 });
 
