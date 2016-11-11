@@ -23,6 +23,10 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get('/', function (req, res) {
+    res.sendFild(path.join(__dirname, './public/index.html'));
+});
+
 let socketArray = [];
 io.on('connection', socket => {
     socket.name = 'user '.concat(socketArray.length);

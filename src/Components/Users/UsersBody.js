@@ -5,21 +5,27 @@ export default class UsersBody extends React.Component {
         return (
             <div className="panel-body">
                 <ul className="media-list">
-                    <li className="media">
-                        <div className="media-body">
-                            <div className="media">
-                                <a className="pull-left" href="#">
-                                    <img className="media-object img-circle userImg" src="img/placeholder.svg"/>
-                                </a>
-                                <div className="media-body">
-                                    <h5>Alex Deo | User
-                                    </h5>
+                    {
+                        this.props.users.map((user, index) => {
+                            return (
+                                <li className="media" key={index}>
+                                    <div className="media-body">
+                                        <div className="media">
+                                            <a className="pull-left" href="#">
+                                                <img className="media-object img-circle userImg" src="img/placeholder.svg"/>
+                                            </a>
+                                            <div className="media-body">
+                                                <h5>{user}</h5>
 
-                                    <small className="text-muted">Active From 3 hours</small>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                                                <small className="text-muted">Active From 3 hours</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            );
+                        })
+                    }
+
                 </ul>
             </div>
         );

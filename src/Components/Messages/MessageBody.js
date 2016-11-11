@@ -5,21 +5,25 @@ class MessageBody extends React.Component {
         return (
             <div className='panel-body'>
                 <ul className='media-list'>
-                    <li className='media'>
-                        <div className="media-body">
-                            <div className="media">
-                                <a className="pull-left" href="#">
-                                    <img className="media-object img-circle " src="img/placeholder.svg"/>
-                                </a>
+                    {this.props.messagesToOutput.map((data, index) => {
+                        return (
+                            <li className='media' key={index}>
                                 <div className="media-body">
-                                    Donec sit amet ligula enim. Duis vel condimentum massa. Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. Duis vel condimentum massa. Donec sit amet ligula enim. Duis vel condimentum massa.
-                                    <br/>
-                                    <small className="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                    <hr/>
+                                    <div className="media">
+                                        <a className="pull-left" href="#">
+                                            <img className="media-object img-circle " src="img/placeholder.svg"/>
+                                        </a>
+                                        <div className="media-body">
+                                            {data.message}
+                                            <br/>
+                                            <small className="text-muted">{data.socketName} | time zone , update later!</small>
+                                            <hr/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         );
