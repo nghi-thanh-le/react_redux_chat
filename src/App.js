@@ -1,15 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import AppTest from './AppTest';
+import ChatApp from './ChatApp';
 import {Provider} from 'react-redux';
 import store from './ReduxArea/store';
 
-store.subscribe(() => {
-    console.log('store changed!!!!!');
-    console.log(store.getState());
-    console.log('-------------------');
-});
+// store.subscribe(() => {
+//     console.log('store changed!!!!!');
+//     console.log(store.getState());
+//     console.log('-------------------');
+// });
 
 render(<Provider store={store}>
-    <AppTest />
+    <ChatApp />
 </Provider>, document.getElementById('app'));
