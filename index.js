@@ -29,17 +29,18 @@ app.get('/', function (req, res) {
 
 let socketArray = [];
 io.on('connection', socket => {
-    socket.name = 'user '.concat(socketArray.length);
-    socketArray.push(socket.name);
-
-    io.emit('NEW_USER', {
-        socketArray,
-        name: socket.name
+    socket.on('USER_LOGIN', userName => {
+        socket.userName = userName;
+        socketArray.push(userName);
+        io.emit('NEW_USER', {
+            socketArray,
+            name: userName
+        });
     });
 
     socket.on('NEW_MESSAGE', message => {
         io.emit('NEW_MESSAGE_RETURN', {
-            socketName: socket.name,
+            socketName: socket.userName,
             message
         });
     });
@@ -47,7 +48,7 @@ io.on('connection', socket => {
     socket.on('disconnect', data => {
         // data = null;
         const index = socketArray.findIndex((value) => {
-            return value == socket.name;
+            return value == socket.userName;
         });
         socketArray.splice(index, 1);
         io.emit('UPDATE_USERS', socketArray);

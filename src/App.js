@@ -9,6 +9,7 @@ import {Router, Route, hashHistory } from 'react-router';
 // Components import
 import UsersList from './Components/Users/UsersList';
 import Messages from './Components/Messages/Messages';
+import Login from './Components/Login/Login';
 
 store.subscribe(() => {
     console.log('store changed!!!!!');
@@ -25,6 +26,7 @@ class ChatApp extends React.Component {
     }
 
     componentDidMount() {
+        this.state.socket.emit('USER_LOGIN', this.props.userLogin);
         this.state.socket.on('NEW_USER', data => {
             this.props.newUser(data.socketArray);
         });
@@ -50,7 +52,8 @@ class ChatApp extends React.Component {
 const mapStateToProps = function(state) {
     return {
         messages: state.messages,
-        users: state.users
+        users: state.users,
+        userLogin: state.userLogin
     };
 };
 
@@ -70,8 +73,7 @@ ChatApp = connect(mapStateToProps, mapDispatchToProps)(ChatApp);
 render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path='/'>
-                <Route path='/chat' component={ChatApp} />
-            </Route>
+            <Route path='/' component={Login} />
+            <Route path='/chat' component={ChatApp} />
         </Router>
     </Provider>, document.getElementById('app'));
