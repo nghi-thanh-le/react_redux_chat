@@ -14,3 +14,10 @@ body .container .row {
     color: white;
     text-decoration: none;
 }
+
+
+.messageBody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import store from './ReduxArea/store';
 import {bindActionCreators, connect} from 'react-redux';
 import io from 'socket.io-client';
-import {Router, Route, hashHistory } from 'react-router';
+import {Router, Route, hashHistory} from 'react-router';
 
 // Components import
 import UsersList from './Components/Users/UsersList';
@@ -50,11 +50,7 @@ class ChatApp extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-    return {
-        messages: state.messages,
-        users: state.users,
-        userLogin: state.userLogin
-    };
+    return {messages: state.messages, users: state.users, userLogin: state.userLogin};
 };
 
 const mapDispatchToProps = function(dispatch) {
