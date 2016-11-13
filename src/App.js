@@ -11,11 +11,11 @@ import UsersList from './Components/Users/UsersList';
 import Messages from './Components/Messages/Messages';
 import Login from './Components/Login/Login';
 
-store.subscribe(() => {
-    console.log('store changed!!!!!');
-    console.log(store.getState());
-    console.log('-------------------');
-});
+// store.subscribe(() => {
+//     console.log('store changed!!!!!');
+//     console.log(store.getState());
+//     console.log('-------------------');
+// });
 
 class ChatApp extends React.Component {
     constructor(props) {

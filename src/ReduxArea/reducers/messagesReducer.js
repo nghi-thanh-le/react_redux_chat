@@ -1,6 +1,9 @@
 // import { newMessage } from '../actions/messagesAction';
 
-const initialState = [];
+const initialState = [{
+    socketName: 'lazy',
+    message: 'Welcome to the simple chat app writen in react-redux!!! Have look and have fun :D'
+}];
 
 const messagesReducer = function (state=initialState, action) {
     switch (action.type) {
@@ -11,6 +14,8 @@ const messagesReducer = function (state=initialState, action) {
                 message: action.data.message
             });
             return newState;
+            break;
+        case 'INSERT_TWEET':
             break;
         default:
             return state;

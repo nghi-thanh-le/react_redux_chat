@@ -1,10 +1,8 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import MessageHeading from './MessageHeading';
 import MessageBody from './MessageBody';
 import MessageInput from './MessageInput';
 import {connect} from 'react-redux';
-import TwitterIdExtract from '../../libs/tweetIdExtract';
 
 class Messages extends React.Component {
     constructor(props) {
