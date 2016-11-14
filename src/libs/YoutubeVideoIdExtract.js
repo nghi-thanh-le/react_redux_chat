@@ -1,12 +1,11 @@
-const regexTemplate = /(http|https):\/\/twitter.com\/([^\/"\s]*)\/status\/(\d+)/;
+const regexTemplate = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/;
 
 export default function (url) {
     let result = url.match(regexTemplate);
     if (result) {
         return {
             url: result[0],
-            twitterUser: result[2],
-            tweetId: result[3]
+            videoId: result[1]
         };
     } else {
         return null;

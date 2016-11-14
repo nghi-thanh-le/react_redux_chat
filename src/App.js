@@ -5,6 +5,7 @@ import store from './ReduxArea/store';
 import {bindActionCreators, connect} from 'react-redux';
 import io from 'socket.io-client';
 import {Router, Route, hashHistory} from 'react-router';
+import YouTube from 'react-youtube';
 
 // Components import
 import UsersList from './Components/Users/UsersList';

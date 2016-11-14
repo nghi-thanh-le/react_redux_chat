@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TweetIdExtract from '../../libs/tweetIdExtract';
+import UrlDetector from '../../libs/UrlDetector';
+import YoutubeVideoIdExtract from '../../libs/YoutubeVideoIdExtract';
 import TwitterWidget from './Twitter/TwitterWidget';
+import YouTube from 'react-youtube';
 
 class MessageBody extends React.Component {
     componentWillUpdate() {
@@ -19,7 +22,13 @@ class MessageBody extends React.Component {
             <div className='panel-body messageBody'>
                 <ul className='media-list'>
                     {this.props.messagesToOutput.map((data, index) => {
-                        const twitterWidget = TweetIdExtract(data.message);
+                        const detectedUrl = UrlDetector(data.message);
+                        let twitterWidget = false;
+                        let youtubeVideoId = false;
+                        if(detectedUrl) {
+                            twitterWidget = TweetIdExtract(detectedUrl);
+                            youtubeVideoId = YoutubeVideoIdExtract(detectedUrl);
+                        }
                         return (
                             <li className='media' key={index}>
                                 <div className="media-body">
@@ -31,6 +40,7 @@ class MessageBody extends React.Component {
                                             {data.message}
                                             <br/>
                                             { twitterWidget ? <TwitterWidget tweetId={twitterWidget.tweetId} /> : null }
+                                            { youtubeVideoId ? <YouTube videoId={youtubeVideoId.videoId} /> : null }
                                             <br/>
                                             <small className="text-muted">{data.socketName} | time zone , update later!</small>
                                             <hr/>
