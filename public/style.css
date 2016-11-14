@@ -16,17 +16,12 @@ body .container .row {
 }
 
 .messageBody {
-    height: 300px;
+    height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .tweetWidget {
-    width: 200px;
-    height: 200px;
-}
-
-.youtube-video {
     width: 200px;
     height: 200px;
 }

@@ -4,7 +4,9 @@ import YouTube from 'react-youtube'
 class YouTubeTemplate extends React.Component {
     render() {
         return (
-            <YouTube videoId={this.props.videoId} className='youtube-video'/>
+            <div className='embed-responsive embed-responsive-4by3'>
+                <YouTube videoId={this.props.videoId} className='embed-responsive-item'/>
+            </div>
         );
     }
 };
