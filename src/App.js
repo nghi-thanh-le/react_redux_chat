@@ -19,20 +19,20 @@ import Login from './Components/Login/Login';
 // });
 
 class ChatApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            socket: io('localhost:3000')
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         socket: io('localhost:3000')
+    //     };
+    // }
 
     componentDidMount() {
-        this.state.socket.emit('USER_LOGIN', this.props.userLogin);
-        this.state.socket.on('NEW_USER', data => {
+        this.props.socket.emit('USER_LOGIN', this.props.userLogin);
+        this.props.socket.on('NEW_USER', data => {
             this.props.dispatchUserLogin(data.name);
             this.props.newUser(data.socketArray);
         });
-        this.state.socket.on('UPDATE_USERS', users => {
+        this.props.socket.on('UPDATE_USERS', users => {
             this.props.updateUsers(users);
         });
     }
@@ -43,8 +43,8 @@ class ChatApp extends React.Component {
                 <div className='row'>
                     <h3 className='text-center'>Chat Example</h3>
                     <br/><br/>
-                    <Messages socket={this.state.socket} messages={this.props.messages}/>
-                    <UsersList socket={this.state.socket} users={this.props.users}/>
+                    <Messages socket={this.props.socket} messages={this.props.messages}/>
+                    <UsersList socket={this.props.socket} users={this.props.users}/>
                 </div>
             </div>
         );
@@ -52,7 +52,12 @@ class ChatApp extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-    return {messages: state.messages, users: state.users, userLogin: state.userLogin};
+    return {
+        socket: state.socket,
+        messages: state.messages,
+        users: state.users,
+        userLogin: state.userLogin
+    };
 };
 
 const mapDispatchToProps = function(dispatch) {
