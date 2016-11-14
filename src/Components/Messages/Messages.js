@@ -5,10 +5,6 @@ import MessageInput from './MessageInput';
 import {connect} from 'react-redux';
 
 class Messages extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.socket.on('NEW_MESSAGE_RETURN', data => {
             this.props.newMessage(data);
@@ -19,7 +15,6 @@ class Messages extends React.Component {
         const body = event.target.value;
         if (event.keyCode === 13) {
             if (event.shiftKey) {
-                // event.target.value = body + '\n';
                 event.preventDefault();
             } else if (body) {
                 this.props.socket.emit('NEW_MESSAGE', body);

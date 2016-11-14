@@ -29,6 +29,7 @@ class ChatApp extends React.Component {
     componentDidMount() {
         this.state.socket.emit('USER_LOGIN', this.props.userLogin);
         this.state.socket.on('NEW_USER', data => {
+            this.props.dispatchUserLogin(data.name);
             this.props.newUser(data.socketArray);
         });
         this.state.socket.on('UPDATE_USERS', users => {
@@ -61,6 +62,9 @@ const mapDispatchToProps = function(dispatch) {
         },
         updateUsers: function(users) {
             dispatch({type: 'UPDATE_USERS', users});
+        },
+        dispatchUserLogin: function (user) {
+            dispatch({type: 'USER_LOGIN', user});
         }
     };
 };

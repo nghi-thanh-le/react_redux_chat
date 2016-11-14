@@ -31,18 +31,18 @@ class MessageBody extends React.Component {
                         }
                         return (
                             <li className='media' key={index}>
-                                <div className="media-body">
-                                    <div className="media">
-                                        <a className="pull-left" href="#">
-                                            <img className="media-object img-circle " src="img/placeholder.svg"/>
+                                <div className='media-body'>
+                                    <div className='media'>
+                                        <a className='pull-right' href='#'>
+                                            <img className='media-object img-circle ' src='img/placeholder.svg'/>
                                         </a>
-                                        <div className="media-body">
-                                            {data.message}
+                                        <div className='media-body'>
+                                            <p className='pull-right'>{data.message}</p>
                                             <br/>
                                             { twitterWidget ? <TwitterWidget tweetId={twitterWidget.tweetId} /> : null }
                                             { youtubeVideoId ? <YouTube videoId={youtubeVideoId.videoId} /> : null }
                                             <br/>
-                                            <small className="text-muted">{data.socketName} | time zone , update later!</small>
+                                            <small className='text-muted pull-right'>{data.socketName} | time zone , update later!</small>
                                             <hr/>
                                         </div>
                                     </div>

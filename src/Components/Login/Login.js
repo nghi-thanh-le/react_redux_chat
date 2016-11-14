@@ -8,7 +8,6 @@ import store from '../../ReduxArea/store';
 class Login extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             errorShow: false
         };

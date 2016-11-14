@@ -7,7 +7,7 @@ class MessageInput extends React.Component {
                 <div className="input-group">
                     <textarea className="form-control" rows='3' onKeyUp={this.props.handleSubmit} placeholder='Enter Message'></textarea>
                     <span className="input-group-btn">
-                        <button className="btn btn-info" type="button">SEND</button>
+                        <button className="btn btn-info" type="button">&#43;</button>
                     </span>
                 </div>
             </div>
