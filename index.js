@@ -32,10 +32,7 @@ io.on('connection', socket => {
     socket.on('USER_LOGIN', userName => {
         socket.userName = userName;
         socketArray.push(userName);
-        io.emit('NEW_USER', {
-            socketArray,
-            name: userName
-        });
+        io.emit('UPDATE_USERS', socketArray)
     });
 
     socket.on('NEW_MESSAGE', message => {
@@ -46,7 +43,6 @@ io.on('connection', socket => {
     });
 
     socket.on('disconnect', data => {
-        // data = null;
         const index = socketArray.findIndex((value) => {
             return value == socket.userName;
         });

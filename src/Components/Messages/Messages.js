@@ -28,7 +28,7 @@ class Messages extends React.Component {
             <div className='col-xs-8 col-sm-8 col-md-8'>
                 <div className='panel panel-info'>
                     <MessageHeading/>
-                    <MessageBody messagesToOutput={this.props.messages}/>
+                    <MessageBody messagesToOutput={this.props.messages} userName={this.props.userName}/>
                     <MessageInput handleSubmit={this.handleSubmit}/>
                 </div>
             </div>

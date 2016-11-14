@@ -54,7 +54,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-
-// <Link to='/chat' className='link-nav'>
-//     <button className='btn btn-lg btn-primary btn-block' type='button' onClick={this.handleSubmit.bind(this)}>Sign in</button>
-// </Link>

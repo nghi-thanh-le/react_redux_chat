@@ -15,8 +15,6 @@ const messagesReducer = function (state=initialState, action) {
             });
             return newState;
             break;
-        case 'INSERT_TWEET':
-            break;
         default:
             return state;
     }

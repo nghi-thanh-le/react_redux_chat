@@ -17,6 +17,17 @@ class MessageBody extends React.Component {
             node.scrollTop = node.scrollHeight
         }
     }
+
+    validateClass(name, nameToCheck, extraStyle) {
+        console.log('name:::::', name);
+        console.log('nameToCheck::::', );
+        if(name == nameToCheck) {
+            return extraStyle ? 'pull-right '.concat(extraStyle) : 'pull-right';
+        } else {
+            return extraStyle ? 'pull-left '.concat(extraStyle) : 'pull-left';
+        }
+    }
+
     render() {
         return (
             <div className='panel-body messageBody'>
@@ -33,16 +44,20 @@ class MessageBody extends React.Component {
                             <li className='media' key={index}>
                                 <div className='media-body'>
                                     <div className='media'>
-                                        <a className='pull-right' href='#'>
+                                        <a className={this.validateClass(data.socketName, this.props.userName)} href='#'>
                                             <img className='media-object img-circle ' src='img/placeholder.svg'/>
                                         </a>
                                         <div className='media-body'>
-                                            <p className='pull-right'>{data.message}</p>
+                                            <p className={this.validateClass(data.socketName, this.props.userName)}>
+                                                {data.message}
+                                            </p>
                                             <br/>
                                             { twitterWidget ? <TwitterWidget tweetId={twitterWidget.tweetId} /> : null }
                                             { youtubeVideoId ? <YouTube videoId={youtubeVideoId.videoId} /> : null }
                                             <br/>
-                                            <small className='text-muted pull-right'>{data.socketName} | time zone , update later!</small>
+                                            <small className={this.validateClass(data.socketName, this.props.userName, 'text-muted')}>
+                                                {data.socketName} | time zone , update later!
+                                            </small>
                                             <hr/>
                                         </div>
                                     </div>
