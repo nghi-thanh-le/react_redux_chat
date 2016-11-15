@@ -21,22 +21,29 @@ body .container .row {
     overflow-x: hidden;
 }
 
-/* nah nah! */
-
-.example-enter {
+/*  for fading react component */
+.JoinLeft-enter {
     opacity: 0.01;
 }
 
-.example-enter.example-appear-active {
+.JoinLeft-enter.JoinLeft-appear-active {
     opacity: 1;
     transition: opacity .5s ease-in;
 }
 
-.example-leave {
+.JoinLeft-leave {
     opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.JoinLeft-leave.JoinLeft-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
+}
+
+/* for friend is typing */
+.typingText {
+    color: #1a1a1a;
+    font-family: 'Muli', sans-serif;
+    font-size: 12px;
+    height: 15px;
 }

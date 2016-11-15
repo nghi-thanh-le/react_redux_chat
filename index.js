@@ -43,6 +43,10 @@ io.on('connection', socket => {
         });
     });
 
+    socket.on('USER_WRITING_CLIENT', data => {
+        socket.broadcast.emit('USER_WRITING_SERVER', {});
+    });
+
     socket.on('disconnect', data => {
         const index = socketArray.findIndex((value) => {
             return value == socket.userName;

@@ -31,7 +31,7 @@ class Messages extends React.Component {
                     <MessageHeading/>
                     <MessageBody messagesToOutput={this.props.messages} userName={this.props.userName}/>
                     <MessageEvent socket={this.props.socket}/>
-                    <MessageInput handleSubmit={this.handleSubmit}/>
+                    <MessageInput socket={this.props.socket} handleSubmit={this.handleSubmit}/>
                 </div>
             </div>
         );

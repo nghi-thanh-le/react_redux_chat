@@ -54,7 +54,7 @@ class Example extends React.Component {
          return (
              <div>
                  <ReactCSSTransitionGroup
-                     transitionName="example"
+                     transitionName="JoinLeft"
                      transitionEnterTimeout={500}
                      transitionLeaveTimeout={300}
                      >
