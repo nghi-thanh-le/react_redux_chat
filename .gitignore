@@ -1,5 +1,4 @@
 bower_components
 node_modules
 requirement.txt
-test.js
-testExport.js
+npm-debug.log
