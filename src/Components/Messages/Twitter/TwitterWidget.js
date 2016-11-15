@@ -4,7 +4,9 @@ import { Tweet } from 'react-twitter-widgets'
 class TwitterWidget extends React.Component {
     render() {
         return (
-            <Tweet className='tweetWidget' tweetId={this.props.tweetId} />
+            <div className={this.props.classCheck}>
+                <Tweet tweetId={this.props.tweetId} />
+            </div>
         );
     }
 };

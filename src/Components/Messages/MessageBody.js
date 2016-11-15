@@ -19,8 +19,6 @@ class MessageBody extends React.Component {
     }
 
     validateClass(name, nameToCheck, extraStyle) {
-        console.log('name:::::', name);
-        console.log('nameToCheck::::', );
         if(name == nameToCheck) {
             return extraStyle ? 'pull-right '.concat(extraStyle) : 'pull-right';
         } else {
@@ -52,8 +50,16 @@ class MessageBody extends React.Component {
                                                 {data.message}
                                             </p>
                                             <br/>
-                                            { twitterWidget ? <TwitterWidget tweetId={twitterWidget.tweetId} /> : null }
-                                            { youtubeVideoId ? <YouTube videoId={youtubeVideoId.videoId} /> : null }
+                                            <div className='clearfix'>
+                                                { twitterWidget ? <TwitterWidget
+                                                    tweetId={twitterWidget.tweetId}
+                                                    classCheck= {this.validateClass(data.socketName, this.props.userName)}
+                                                    /> : null }
+                                                { youtubeVideoId ? <YouTube
+                                                    videoId={youtubeVideoId.videoId}
+                                                    classCheck= {this.validateClass(data.socketName, this.props.userName)}
+                                                    /> : null }
+                                            </div>
                                             <br/>
                                             <small className={this.validateClass(data.socketName, this.props.userName, 'text-muted')}>
                                                 {data.socketName} | time zone , update later!
