@@ -1,5 +1,5 @@
 body .container .row {
-    padding-top: 40px;
+    padding-top: 10px;
 }
 
 .userImg {
@@ -16,16 +16,27 @@ body .container .row {
 }
 
 .messageBody {
-    height: 500px;
+    height: 475px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.tweetWidget {
-    width: 200px;
-    height: 200px;
+/* nah nah! */
+
+.example-enter {
+    opacity: 0.01;
 }
 
-.it-is-me {
-    background-color: #f9f9f9;
+.example-enter.example-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
 }

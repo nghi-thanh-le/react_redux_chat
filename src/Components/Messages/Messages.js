@@ -2,6 +2,7 @@ import React from 'react';
 import MessageHeading from './MessageHeading';
 import MessageBody from './MessageBody';
 import MessageInput from './MessageInput';
+import MessageEvent from './MessageEvent';
 import {connect} from 'react-redux';
 
 class Messages extends React.Component {
@@ -29,6 +30,7 @@ class Messages extends React.Component {
                 <div className='panel panel-info'>
                     <MessageHeading/>
                     <MessageBody messagesToOutput={this.props.messages} userName={this.props.userName}/>
+                    <MessageEvent socket={this.props.socket}/>
                     <MessageInput handleSubmit={this.handleSubmit}/>
                 </div>
             </div>

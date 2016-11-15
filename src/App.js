@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import store from './ReduxArea/store';
 import {bindActionCreators, connect} from 'react-redux';
 import {Router, Route, hashHistory} from 'react-router';
-import YouTube from 'react-youtube';
 
 // Components import
 import UsersList from './Components/Users/UsersList';
@@ -35,11 +34,7 @@ class ChatApp extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-    return {
-        socketIO: state.socket,
-        messages: state.messages,
-        users: state.users
-    };
+    return {socketIO: state.socket, messages: state.messages, users: state.users};
 };
 
 const mapDispatchToProps = function(dispatch) {

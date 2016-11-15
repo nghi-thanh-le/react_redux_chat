@@ -32,7 +32,8 @@ io.on('connection', socket => {
     socket.on('USER_LOGIN', userName => {
         socket.userName = userName;
         socketArray.push(userName);
-        io.emit('UPDATE_USERS', socketArray)
+        socket.broadcast.emit('ROOM_JOIN', userName);
+        io.emit('UPDATE_USERS', socketArray);
     });
 
     socket.on('NEW_MESSAGE', message => {
@@ -47,6 +48,7 @@ io.on('connection', socket => {
             return value == socket.userName;
         });
         socketArray.splice(index, 1);
+        socket.broadcast.emit('ROOM_LEFT', socket.userName);
         io.emit('UPDATE_USERS', socketArray);
     });
 });
