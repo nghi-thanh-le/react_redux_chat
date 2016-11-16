@@ -3,9 +3,20 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class TransitionComponent extends React.Component {
     render() {
+        let otherMessage = '';
+
+        switch (this.props.classEvent) {
+            case 'alert alert-info':
+                otherMessage = 'joined';
+                break;
+            case 'alert alert-danger':
+                otherMessage = 'left';
+                break;
+        }
+
         return (
             <div className={this.props.classEvent}>
-                <p>{this.props.userName} just joined the room!</p>
+                <p>{this.props.userName} just {otherMessage} the room!</p>
             </div>
         );
     }
@@ -58,7 +69,7 @@ class Example extends React.Component {
                      transitionEnterTimeout={500}
                      transitionLeaveTimeout={300}
                      >
-                     {this.state.show ? <TransitionComponent userName={this.state.userName} classEvent={this.state.classEvent}/> : null}
+                     {this.state.show ? <TransitionComponent userName={this.state.userName} classEvent={this.state.classEvent} /> : null}
                  </ReactCSSTransitionGroup>
              </div>
          );

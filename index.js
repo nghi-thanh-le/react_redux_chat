@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const moment = require('moment');
 
 const compiler = webpack(webpackConfig);
 const app = express();
@@ -39,7 +40,8 @@ io.on('connection', socket => {
     socket.on('NEW_MESSAGE', message => {
         io.emit('NEW_MESSAGE_RETURN', {
             socketName: socket.userName,
-            message
+            message,
+            timeZone: moment()
         });
     });
 

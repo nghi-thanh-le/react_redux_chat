@@ -1,8 +1,11 @@
 // import { newMessage } from '../actions/messagesAction';
 
+import moment from 'moment';
+
 const initialState = [{
     socketName: 'lazy',
-    message: 'Welcome to the simple chat app writen in react-redux!!! Have look and have fun :D'
+    message: 'Welcome to the simple chat app writen in react-redux!!! Have look and have fun :D',
+    timeZone: moment()
 }];
 
 const messagesReducer = function (state=initialState, action) {
@@ -11,7 +14,8 @@ const messagesReducer = function (state=initialState, action) {
             let newState = [].concat(state);
             newState = newState.concat({
                 socketName: action.data.socketName,
-                message: action.data.message
+                message: action.data.message,
+                timeZone: action.data.timeZone
             });
             return newState;
             break;

@@ -5,6 +5,7 @@ import UrlDetector from '../../libs/UrlDetector';
 import YoutubeVideoIdExtract from '../../libs/YoutubeVideoIdExtract';
 import TwitterWidget from './Twitter/TwitterWidget';
 import YouTube from 'react-youtube';
+import moment from 'moment';
 
 class MessageBody extends React.Component {
     componentWillUpdate() {
@@ -62,7 +63,7 @@ class MessageBody extends React.Component {
                                             </div>
                                             <br/>
                                             <small className={this.validateClass(data.socketName, this.props.userName, 'text-muted')}>
-                                                {data.socketName} | time zone , update later!
+                                                {data.socketName} | {moment(data.timeZone).format('MMMM Do YYYY, h:mm:ss a')}
                                             </small>
                                             <hr/>
                                         </div>

@@ -16,8 +16,6 @@ export default class UsersBody extends React.Component {
                                             </a>
                                             <div className="media-body">
                                                 <h5>{user}</h5>
-
-                                                <small className="text-muted">Active From 3 hours</small>
                                             </div>
                                         </div>
                                     </div>
