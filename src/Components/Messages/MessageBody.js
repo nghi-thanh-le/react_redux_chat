@@ -8,17 +8,6 @@ import YouTube from 'react-youtube';
 import moment from 'moment';
 
 class MessageBody extends React.Component {
-    componentWillUpdate() {
-        let node = ReactDOM.findDOMNode(this);
-        this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
-    }
-    componentDidUpdate() {
-        if (this.shouldScrollBottom) {
-            let node = ReactDOM.findDOMNode(this);
-            node.scrollTop = node.scrollHeight
-        }
-    }
-
     validateClass(name, nameToCheck, extraStyle) {
         if(name == nameToCheck) {
             return extraStyle ? 'pull-right '.concat(extraStyle) : 'pull-right';
@@ -44,7 +33,7 @@ class MessageBody extends React.Component {
                                 <div className='media-body'>
                                     <div className='media'>
                                         <a className={this.validateClass(data.socketName, this.props.userName)} href='#'>
-                                            <img className='media-object img-circle ' src='img/placeholder.svg'/>
+                                            <img className='media-object img-circle' src='img/placeholder.svg'/>
                                         </a>
                                         <div className='media-body'>
                                             <p className={this.validateClass(data.socketName, this.props.userName)}>

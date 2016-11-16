@@ -1,5 +1,4 @@
 import React from 'react';
-import MessageHeading from './MessageHeading';
 import MessageBody from './MessageBody';
 import MessageInput from './MessageInput';
 import MessageEvent from './MessageEvent';
@@ -26,12 +25,17 @@ class Messages extends React.Component {
 
     render() {
         return (
-            <div className='col-xs-8 col-sm-8 col-md-8'>
-                <div className='panel panel-info'>
-                    <MessageHeading/>
-                    <MessageBody messagesToOutput={this.props.messages} userName={this.props.userName}/>
-                    <MessageEvent socket={this.props.socket}/>
-                    <MessageInput socket={this.props.socket} handleSubmit={this.handleSubmit}/>
+            <div id="page-content-wrapper">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-12 pre-panel-style">
+                            <div className="panel panel-extra">
+                                <MessageBody messagesToOutput={this.props.messages} userName={this.props.userName}/>
+                                <MessageEvent socket={this.props.socket} />
+                                <MessageInput socket={this.props.socket} handleSubmit={this.handleSubmit}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

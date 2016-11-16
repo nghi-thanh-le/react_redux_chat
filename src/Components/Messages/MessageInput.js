@@ -36,9 +36,8 @@ class MessageInput extends React.Component {
 
     render() {
         return (
-            <div className="panel-footer">
+            <div className="panel-footer inputField">
                 { this.state.show ? <IsTypingComponent /> : null }
-
                 <div className="form-group">
                     <textarea
                         className="form-control"

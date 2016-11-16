@@ -4,7 +4,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class TransitionComponent extends React.Component {
     render() {
         let otherMessage = '';
-
         switch (this.props.classEvent) {
             case 'alert alert-info':
                 otherMessage = 'joined';
@@ -15,7 +14,7 @@ class TransitionComponent extends React.Component {
         }
 
         return (
-            <div className={this.props.classEvent}>
+            <div className={this.props.classEvent.concat(' MessageEvent')}>
                 <p>{this.props.userName} just {otherMessage} the room!</p>
             </div>
         );

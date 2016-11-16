@@ -8,11 +8,11 @@ export default class UsersList extends React.Component {
 
     render() {
         return (
-            <div className='col-xs-4 col-sm-4 col-md-4'>
-                <div className="panel panel-primary">
+            <div id="sidebar-wrapper">
+                <ul className="sidebar-nav">
                     <UsersHeading />
                     <UsersBody users={this.props.users}/>
-                </div>
+                </ul>
             </div>
         );
     }
