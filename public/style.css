@@ -22,6 +22,7 @@ body {
 }
 
 .messageBody {
+    max-height: 550px;
     min-height: 550px;
     overflow-y: auto;
     overflow-x: hidden;
