@@ -5,8 +5,8 @@ Web application: web based chat app which communicates using HTTP and WebSockets
 
 End result: We can chat with you by using your web application.
 
-[mark]: http://www.iconsdb.com/icons/preview/green/checkmark-xxl.png "Mark Icon"
-[unmark]: http://image.flaticon.com/icons/svg/60/60578.svg "Unmarked Icon"
+[mark]: https://cdn1.iconfinder.com/data/icons/everyday-2/64/check_mark_ok_good-128.png "Mark Icon"
+[unmark]: https://cdn4.iconfinder.com/data/icons/geomicons/32/672366-x-128.png "Unmarked Icon"
 
 Requirements
 
