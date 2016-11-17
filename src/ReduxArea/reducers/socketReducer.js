@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 
 const initialState = {
-    socket: io(window.location.hostname),
+    socket: io(window.location.hostname == 'localhost' ? 'http://localhost:5062' : window.location.hostname),
     userName: ''
 };
 
