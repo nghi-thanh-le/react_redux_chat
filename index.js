@@ -1,18 +1,18 @@
-const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const path = require('path');
-const socketIo = require('socket.io');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const moment = require('moment');
+var express = require('express');
+var http = require('http');
+var bodyParser = require('body-parser');
+var path = require('path');
+var socketIo = require('socket.io');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.config');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var moment = require('moment');
 
-const compiler = webpack(webpackConfig);
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+var compiler = webpack(webpackConfig);
+var app = express();
+var server = http.createServer(app);
+var io = socketIo(server);
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
     res.sendFild(path.join(__dirname, './public/index.html'));
 });
 
-let socketArray = [];
+var socketArray = [];
 io.on('connection', socket => {
     socket.on('USER_LOGIN', userName => {
         socket.userName = userName;
@@ -50,7 +50,7 @@ io.on('connection', socket => {
     });
 
     socket.on('disconnect', data => {
-        const index = socketArray.findIndex((value) => {
+        var index = socketArray.findIndex((value) => {
             return value == socket.userName;
         });
         socketArray.splice(index, 1);
