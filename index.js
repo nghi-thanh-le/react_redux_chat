@@ -3,22 +3,25 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var path = require('path');
 var socketIo = require('socket.io');
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.config');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
 var moment = require('moment');
 
-var compiler = webpack(webpackConfig);
 var app = express();
 var server = http.createServer(app);
 var io = socketIo(server);
 
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath
-}));
-app.use(webpackHotMiddleware(compiler));
+if(process.env.NODE_ENV !== 'production') {
+    var webpack = require('webpack');
+    var webpackConfig = require('./webpack.dev.config');
+    var webpackDevMiddleware = require('webpack-dev-middleware');
+    var webpackHotMiddleware = require('webpack-hot-middleware');
+    var compiler = webpack(webpackConfig);
+    app.use(webpackDevMiddleware(compiler, {
+        noInfo: true,
+        publicPath: webpackConfig.output.publicPath
+    }));
+    app.use(webpackHotMiddleware(compiler));
+}
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
