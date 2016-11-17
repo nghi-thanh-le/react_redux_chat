@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/dist'
+        publicPath: '/'
     },
     resolve: {
         modulesDirectories: ['node_modules', 'src'],
