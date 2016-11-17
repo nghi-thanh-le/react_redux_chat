@@ -2,3 +2,4 @@ bower_components
 node_modules
 requirement.txt
 npm-debug.log
+test.js

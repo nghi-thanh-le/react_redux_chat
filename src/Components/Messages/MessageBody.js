@@ -18,7 +18,7 @@ class MessageBody extends React.Component {
             node.scrollTop = node.scrollHeight
         }
     }
-    
+
     validateClass(name, nameToCheck, extraStyle) {
         if(name == nameToCheck) {
             return extraStyle ? 'pull-right '.concat(extraStyle) : 'pull-right';
@@ -51,16 +51,18 @@ class MessageBody extends React.Component {
                                                 {data.message}
                                             </p>
                                             <br/>
-                                            <div className='clearfix'>
+                                            <div className='clearfix'></div>
+                                            <div className={this.validateClass(data.socketName, this.props.userName)}>
                                                 { twitterWidget ? <TwitterWidget
                                                     tweetId={twitterWidget.tweetId}
-                                                    classCheck= {this.validateClass(data.socketName, this.props.userName)}
+                                                    classCheck=''
                                                     /> : null }
                                                 { youtubeVideoId ? <YouTube
                                                     videoId={youtubeVideoId.videoId}
-                                                    classCheck= {this.validateClass(data.socketName, this.props.userName)}
+                                                    classCheck=''
                                                     /> : null }
                                             </div>
+                                            <div className='clearfix'></div>
                                             <br/>
                                             <small className={this.validateClass(data.socketName, this.props.userName, 'text-muted')}>
                                                 {data.socketName} | {moment(data.timeZone).format('MMMM Do YYYY, h:mm:ss a')}
