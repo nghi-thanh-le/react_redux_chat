@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 
 const initialState = {
-    socket: io('localhost:3000'),
+    socket: io(window.location.hostname),
     userName: ''
 };
 

@@ -8,6 +8,7 @@ var moment = require('moment');
 var app = express();
 var server = http.createServer(app);
 var io = socketIo(server);
+var PORT = process.env.PORT || 5062;
 
 if(process.env.NODE_ENV !== 'production') {
     var webpack = require('webpack');
@@ -62,6 +63,6 @@ io.on('connection', socket => {
     });
 });
 
-server.listen(3000, function () {
-    console.log('Server running on port 3000');
+server.listen(PORT, function () {
+    console.log(`Server running on port ${PORT}`);
 });
